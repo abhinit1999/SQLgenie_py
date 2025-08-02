@@ -76,16 +76,29 @@ def main():
     st.sidebar.markdown("#### 👨‍💻 Built by: Abhinit")
     st.sidebar.markdown("#### ⚡ Tech: Python + LangChain + Groq + Streamlit")
 
+
+
+
+
+
     # Main input
     user_query = st.text_input("Natural language query:")
     submit = st.button("Result")
 
+
+    
+
+
+
+
     if submit:
         with st.spinner("🔄 Generating SQL and fetching results..."):
-            time.sleep(2)
+            time.sleep(4)
 
         sql_query = get_sql_query(user_query)
         retrieved_data = return_sql_response(sql_query)
+
+        
 
         if sql_query == "Sorry I do not have any idea about it":
             st.warning("⚠️ Sorry, I do not have any idea about that query.")
@@ -96,6 +109,18 @@ def main():
             st.subheader(f"Data successfully retrieved for:- {user_query}\nSQL Query is: [{sql_query}]")
             for row in retrieved_data:
                 st.write(row)
+    st.write("""
+                Test with Sample Table: STUDENT
+                Interact with the app using our sample table STUDENT, which includes the following columns:
+
+               - NAME — Name of the student
+
+               - COURSE — Course name (e.g., Data Science, DEVOPS,Machine learning,AI Ethics...)
+
+               - SECTION — Class section (e.g., A, B, C)
+
+               - MARKS — Marks scored by the student
+        """)
 
 if __name__ == '__main__':
     main()
